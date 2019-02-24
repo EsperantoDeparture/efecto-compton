@@ -50,5 +50,13 @@ export class AppModule {
       'remove',
       sanitizer.bypassSecurityTrustResourceUrl('assets/remove.svg')
     );
+    iconRegistry.addSvgIcon(
+      'navigate_before',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/navigate_before.svg')
+    );
+    iconRegistry.addSvgIcon(
+      'navigate_next',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/navigate_next.svg')
+    );
   }
 }
