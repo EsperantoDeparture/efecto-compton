@@ -1,3 +1,39 @@
-<p>
-  home works!
-</p>
+Ingrese los ángulos para los cuales desea hallar el aumento en la longitud de
+onda.
+
+<form>
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      min="0"
+      max="360"
+      placeholder="Nuevo ángulo"
+      [(ngModel)]="newAngle"
+      name="nangle"
+    />
+  </mat-form-field>
+</form>
+<button
+  mat-icon-button
+  (click)="add()"
+  matTooltip="Nuevo ángulo"
+>
+  <mat-icon svgIcon="add"></mat-icon>
+</button>
+<mat-list>
+  <div @fadeInOut *ngFor="let angle of angles; let i = index; let c = count">
+    <mat-list-item>
+      {{ angle }}
+      <button
+        mat-button
+        mat-icon-button
+        matSuffix
+        (click)="remove(angle)"
+      >
+        <mat-icon svgIcon="remove"></mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-divider *ngIf="c - 1 > i"></mat-divider>
+  </div>
+</mat-list>
