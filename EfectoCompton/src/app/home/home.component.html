@@ -8,19 +8,20 @@ onda.
       type="number"
       min="0"
       max="360"
-      placeholder="Nuevo ángulo"
+      placeholder="Ángulo (en grados)"
       [(ngModel)]="newAngle"
       name="nangle"
-    />
+    /><button
+      mat-icon-button
+      (click)="add()"
+      matTooltip="Añadir el nuevo ángulo"
+      matSuffix
+    >
+      <mat-icon svgIcon="add"></mat-icon>
+    </button>
   </mat-form-field>
 </form>
-<button
-  mat-icon-button
-  (click)="add()"
-  matTooltip="Nuevo ángulo"
->
-  <mat-icon svgIcon="add"></mat-icon>
-</button>
+
 <mat-list>
   <div @fadeInOut *ngFor="let angle of angles; let i = index; let c = count">
     <mat-list-item>
@@ -30,6 +31,7 @@ onda.
         mat-icon-button
         matSuffix
         (click)="remove(angle)"
+        matTooltip="Remover ángulo"
       >
         <mat-icon svgIcon="remove"></mat-icon>
       </button>
@@ -37,3 +39,13 @@ onda.
     <mat-divider *ngIf="c - 1 > i"></mat-divider>
   </div>
 </mat-list>
+
+<button
+  mat-icon-button
+  mat-raised-button
+  color="primary"
+  (click)="graph()"
+  matTooltip="Graficar ángulo vs longitud de onda"
+>
+  <mat-icon svgIcon="navigate_next"></mat-icon>
+</button>
