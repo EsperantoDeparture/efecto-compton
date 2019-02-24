@@ -13,7 +13,8 @@ import {
   MatDividerModule,
   MatIconModule,
   MatIconRegistry,
-  MatTooltipModule
+  MatTooltipModule,
+  MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatDividerModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
