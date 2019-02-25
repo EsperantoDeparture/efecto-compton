@@ -66,5 +66,9 @@ export class AppModule {
       'save_alt',
       sanitizer.bypassSecurityTrustResourceUrl('assets/save_alt.svg')
     );
+    iconRegistry.addSvgIcon(
+      'home',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/home.svg')
+    );
   }
 }

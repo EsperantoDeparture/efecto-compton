@@ -1,3 +1,33 @@
 <mat-toolbar color="primary">
   Efecto Compton
+  <div [ngStyle]="{ margin: '0 auto' }"></div>
+
+  <button
+    @fadeInOut
+    mat-icon-button
+    mat-raised-button
+    (click)="location.back()"
+    matTooltip="Página anterior"
+  >
+    <mat-icon svgIcon="navigate_before"></mat-icon>
+  </button>
+  <button
+    @fadeInOut
+    mat-icon-button
+    mat-raised-button
+    (click)="location.forward()"
+    matTooltip="Página siguiente"
+  >
+    <mat-icon svgIcon="navigate_next"></mat-icon>
+  </button>
+  <button
+    @fadeInOut
+    color="accent"
+    mat-icon-button
+    mat-raised-button
+    (click)="home()"
+    matTooltip="Volver al inicio"
+  >
+    <mat-icon svgIcon="home"></mat-icon>
+  </button>
 </mat-toolbar>
