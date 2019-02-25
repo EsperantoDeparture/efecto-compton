@@ -7,6 +7,7 @@ import {
   trigger
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { MessageService } from '../message/message.service';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   newAngle: number;
   waveLength: number;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private messageService: MessageService) {}
 
   ngOnInit() {}
 
@@ -52,10 +53,12 @@ export class HomeComponent implements OnInit {
   }
 
   graph() {
-    if (!this.angles.length) {
+    if (!this.waveLength) {
+      this.messageService.show('No se ha ingresado la longitud de onda');
       return;
     }
-    if (!this.waveLength) {
+    if (!this.angles.length) {
+      this.messageService.show('No se ha ingresado ningún ángulo');
       return;
     }
     this.router.navigate(['grafica'], {
