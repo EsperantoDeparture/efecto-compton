@@ -15,7 +15,8 @@ import {
   MatIconRegistry,
   MatTooltipModule,
   MatToolbarModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     HttpClientModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
