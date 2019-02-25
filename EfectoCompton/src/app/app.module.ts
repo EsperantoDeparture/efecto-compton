@@ -62,5 +62,9 @@ export class AppModule {
       'navigate_next',
       sanitizer.bypassSecurityTrustResourceUrl('assets/navigate_next.svg')
     );
+    iconRegistry.addSvgIcon(
+      'save_alt',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/save_alt.svg')
+    );
   }
 }

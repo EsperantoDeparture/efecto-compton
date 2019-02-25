@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-graph',
@@ -12,6 +13,7 @@ export class GraphComponent implements OnInit {
   c = 3 * Math.pow(10, 8);
   me = 9.10938356 * Math.pow(10, -31);
   dataTable: number[][] = [];
+  exportedDataFName = 'Efecto Compton';
   options: any = {
     pointSize: 3,
     highlightCircleSize: 5,
@@ -61,11 +63,16 @@ export class GraphComponent implements OnInit {
       }
       this.options.dateWindow[0] = angles[0] - 10;
       this.options.dateWindow[1] = angles[angles.length - 1] + 10;
-      console.log(angles);
-      console.log(this.options.dateWindow);
       this.csv = aux;
     });
   }
 
   ngOnInit() {}
+
+  save() {
+    const blob = new Blob([this.csv], {
+      type: 'text/csv'
+    });
+    saveAs(blob, this.exportedDataFName + '.csv');
+  }
 }

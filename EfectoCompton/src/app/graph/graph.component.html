@@ -1,12 +1,8 @@
 <ngx-dygraphs *ngIf="csv" [data]="csv" [options]="options"></ngx-dygraphs>
 <table class="table">
   <tr>
-    <th>
-      {{ '\u03B8' }} (°)
-    </th>
-    <th>
-      {{ '\u03BB' }}' (m)
-    </th>
+    <th>{{ '\u03B8' }} (°)</th>
+    <th>{{ '\u03BB' }}' (m)</th>
   </tr>
   <tr *ngFor="let datum of dataTable">
     <td>
@@ -14,6 +10,34 @@
     </td>
     <td>
       {{ datum[1] }}
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <form>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="exportedDataFName"
+            placeholder="nombre del archivo"
+            name="exportdatafname"
+          />
+        </mat-form-field>
+      </form>
+    </td>
+    <td>
+      <button
+        mat-raised-button
+        mat-icon-button
+        (click)="save()"
+        color="accent"
+        matTooltip="Exportar tabla en formato csv"
+      >
+        <mat-icon svgIcon="save_alt"></mat-icon>
+      </button>
     </td>
   </tr>
 </table>
