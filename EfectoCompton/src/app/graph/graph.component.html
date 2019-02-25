@@ -1,1 +1,19 @@
-<ngx-dygraphs *ngIf="data" [data]="data" [options]="options"></ngx-dygraphs>
+<ngx-dygraphs *ngIf="csv" [data]="csv" [options]="options"></ngx-dygraphs>
+<table class="table">
+  <tr>
+    <th>
+      {{ '\u03B8' }} (°)
+    </th>
+    <th>
+      {{ '\u03BB' }}' (m)
+    </th>
+  </tr>
+  <tr *ngFor="let datum of dataTable">
+    <td>
+      {{ datum[0] }}
+    </td>
+    <td>
+      {{ datum[1] }}
+    </td>
+  </tr>
+</table>
