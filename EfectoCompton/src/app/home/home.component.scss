@@ -1,0 +1,19 @@
+.parent-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.grand-parent-container {
+  display: table;
+  height: calc(100% - 54px);
+  margin: 0 auto;
+}
+
+.form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
