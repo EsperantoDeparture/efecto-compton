@@ -29,6 +29,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   angles: number[] = [];
   newAngle: number;
+  waveLength: number;
 
   constructor(private router: Router) {}
 
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.angles.push(this.newAngle);
-    this.angles.sort();
+    this.angles = this.angles.sort((a: number, b: number) => a - b);
     this.newAngle = undefined;
   }
 
@@ -54,9 +55,13 @@ export class HomeComponent implements OnInit {
     if (!this.angles.length) {
       return;
     }
+    if (!this.waveLength) {
+      return;
+    }
     this.router.navigate(['grafica'], {
       queryParams: {
-        angles: this.angles.join()
+        angles: this.angles.join(),
+        waveLength: this.waveLength
       }
     });
   }
