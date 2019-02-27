@@ -52,7 +52,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "baseHref": "/",
+              "deployUrl": "https://esperantodeparture.github.io/efecto-compton"
             }
           }
         },
