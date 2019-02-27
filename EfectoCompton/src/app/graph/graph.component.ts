@@ -24,17 +24,9 @@ export class GraphComponent implements OnInit {
     height: 250,
     legend: 'always',
     axes: {
-      y1: {
+      y: {
         valueFormatter: (v: number) => {
-          return `${v.toExponential(4)}`; // controls formatting in the legend/mouseover
-        },
-        axisLabelFormatter: (v: number) => {
-          return `${v.toExponential(0)}`; // controls formatting of the y-axis labels
-        }
-      },
-      y2: {
-        valueFormatter: (v: number) => {
-          return `${v.toExponential(4)}`; // controls formatting in the legend/mouseover
+          return `${v.toExponential(4)}J`; // controls formatting in the legend/mouseover
         },
         axisLabelFormatter: (v: number) => {
           return `${v.toExponential(0)}`; // controls formatting of the y-axis labels
@@ -51,7 +43,7 @@ export class GraphComponent implements OnInit {
     },
     dateWindow: [-10, 370],
     xlabel: 'Ángulo (°)',
-    ylabel: 'Energía',
+    ylabel: 'Energía (J)',
   };
   comptonWaveLength = this.h / (this.me * this.c);
   constructor(private activatedRoute: ActivatedRoute) {
