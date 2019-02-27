@@ -3,7 +3,8 @@
   <table class="table">
     <tr>
       <th>{{ '\u03B8' }} (°)</th>
-      <th>{{ '\u03BB' }}' (m)</th>
+      <th>{{ 'Ek' }}'</th>
+      <th>{{ 'E' }}'</th>
     </tr>
     <tr *ngFor="let datum of dataTable">
       <td>
@@ -11,6 +12,9 @@
       </td>
       <td>
         {{ datum[1] }}
+      </td>
+      <td>
+        {{ datum[2] }}
       </td>
     </tr>
   </table>

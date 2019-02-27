@@ -18,18 +18,26 @@ export class GraphComponent implements OnInit {
     pointSize: 3,
     highlightCircleSize: 5,
     drawPoints: true,
-    strokeWidth: 0.0,
+    strokeWidth: 2,
     displayAnnotations: true,
     width: '100%',
     height: 250,
     legend: 'always',
     axes: {
-      y: {
+      y1: {
         valueFormatter: (v: number) => {
-          return `${v.toExponential(4)}m`; // controls formatting in the legend/mouseover
+          return `${v.toExponential(4)}`; // controls formatting in the legend/mouseover
         },
         axisLabelFormatter: (v: number) => {
-          return `${v.toExponential(2)}m`; // controls formatting of the y-axis labels
+          return `${v.toExponential(0)}`; // controls formatting of the y-axis labels
+        }
+      },
+      y2: {
+        valueFormatter: (v: number) => {
+          return `${v.toExponential(4)}`; // controls formatting in the legend/mouseover
+        },
+        axisLabelFormatter: (v: number) => {
+          return `${v.toExponential(0)}`; // controls formatting of the y-axis labels
         }
       },
       x: {
@@ -37,11 +45,13 @@ export class GraphComponent implements OnInit {
           return `${v}°`; // controls formatting in the legend/mouseover
         },
         axisLabelFormatter: (v: number) => {
-          return `${v}°`; // controls formatting of the y-axis labels
+          return `${v}`; // controls formatting of the y-axis labels
         }
       }
     },
-    dateWindow: [-10, 370]
+    dateWindow: [-10, 370],
+    xlabel: 'Ángulo (°)',
+    ylabel: 'Energía',
   };
   comptonWaveLength = this.h / (this.me * this.c);
   constructor(private activatedRoute: ActivatedRoute) {
@@ -52,14 +62,16 @@ export class GraphComponent implements OnInit {
       if (!angles || !angles.length) {
         return;
       }
-      let aux = 'Angulo, \u03BB\'\n';
+      let aux = 'Angulo, Ek, E\'\n';
       const waveLength = parseFloat(params['waveLength']);
       for (const angle of angles) {
         const scatteredWavelength: number =
           waveLength +
           this.comptonWaveLength * (1 - Math.cos(0.0174532925 * angle));
-        this.dataTable.push([angle, scatteredWavelength]);
-        aux += `${angle}, ${scatteredWavelength}\n`;
+        const scatteredPhotonEnergy: number = (this.h * this.c) / scatteredWavelength;
+        const kineticEnergy: number = (this.h * this.c) / waveLength - scatteredPhotonEnergy;
+        this.dataTable.push([angle, kineticEnergy, scatteredPhotonEnergy]);
+        aux += `${angle}, ${kineticEnergy}, ${scatteredPhotonEnergy}\n`;
       }
       this.options.dateWindow[0] = angles[0] - 10;
       this.options.dateWindow[1] = angles[angles.length - 1] + 10;
